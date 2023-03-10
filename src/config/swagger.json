@@ -1,0 +1,130 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Promart Challenge API",
+        "description": "API de Promart"
+    },
+    "host": "https://2y52usubzj.execute-api.us-east-1.amazonaws.com",
+    "basePath": "/",
+    "tags": [
+      {
+        "name": "Clients",
+        "description": "Operaciones de los clientes"
+      }
+    ],
+    "schemes": [
+      "https"
+    ],
+    "consumes": [
+      "application/json"
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "paths": {
+      "/listclientes": {
+        "get": {
+          "tags": [
+            "Clients"
+          ],
+          "summary": "Obtener los clientes guardados",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Client"
+              }
+            }
+          }
+        }
+      },
+      "/creacliente": {
+        "post": {
+          "tags": [
+            "Clients"
+          ],
+          "description": "Guardar un cliente",
+          "parameters": [
+            {
+              "name": "client",
+              "in": "body",
+              "description": "Datos del cliente que se desea crear",
+              "schema": {
+                "$ref": "#/definitions/Client"
+              }
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "201": {
+              "description": "Un cliente fue creado",
+              "schema": {
+                "$ref": "#/definitions/Message"
+              }
+            }
+          }
+        }
+      },
+      "/kpideclientes": {
+        "get": {
+          "tags": [
+            "Clients"
+          ],
+          "summary": "Obtener el kpi de los clientes",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Client"
+              }
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "Client": {
+        "required": [
+          "nombre",
+          "apellido",
+          "edad",
+          "fecha_nacimiento"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "uniqueItems": true
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "apellido": {
+            "type": "string"
+          },
+          "edad": {
+            "type": "number"
+          },
+          "fecha_nacimiento": {
+            "type": "string"
+          }
+        }
+      },
+      "Message": {
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "Error": {
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    }
+}
