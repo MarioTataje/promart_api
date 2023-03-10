@@ -7,8 +7,7 @@ const createClient = async (data) => {
     return {'message': 'The fit was retrieved'};
 }
 
-const kpiClients = async (data) => {
-    console.log(data);
+const kpiClients = async () => {
     return {'message': 'The fit was retrieved'};
 }
 

@@ -1,10 +1,16 @@
-const express = require("express");
-const cors = require("cors");
-const bodyParser = require("body-parser");
+const express = require('express');
+const cors = require('cors');
+const bodyParser = require('body-parser');
 const app = express();
-const {router: clientRoutes} = require("./src/routes/client");
-const swaggerUI = require("swagger-ui-express");
+const {router: clientRoutes} = require('./src/routes/client');
+const swaggerUI = require('swagger-ui-express');
 const swaggerDocument = require('./src/config/swagger.json');
+const sequelize = require('./src/config/db');
+
+sequelize.sync().then( () => {
+        console.log("This is the data")
+    }
+);
 
 app.use(bodyParser.json());
 app.use(cors());

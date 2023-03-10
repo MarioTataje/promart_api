@@ -1,4 +1,4 @@
-const ClientService = require("../services/client");
+const ClientService = require('../services/client');
 
 const getClients = async (req, res) => {
     try {
@@ -35,7 +35,7 @@ const createClient = async (req, res) => {
 
 const kpiClients = async (req, res) => {
     try {
-        const message = await ClientService.getClients();
+        const message = await ClientService.kpiClients();
         return res.status(201).send(message);
     } catch (err) {
         if(err.status) {
