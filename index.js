@@ -3,12 +3,12 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const app = express();
 
-const {router: fitRoutes} = require("./src/routes/fit");
+const {router: clientRoutes} = require("./src/routes/client");
 
 
 app.use(bodyParser.json());
 app.use(cors());
-app.use('/api/fit', fitRoutes);
+app.use('/api/', clientRoutes);
 
 const PORT = 4040;
 app.listen(PORT, () => {
