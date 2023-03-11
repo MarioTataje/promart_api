@@ -1,14 +1,18 @@
+const client = require('../models/client');
+
 const getClients = async () => {
-    return {'message': 'The fit was retrieved'};
+    const clients = await client.findAll();
+    return clients;
 }
 
 const createClient = async (data) => {
-    console.log(data);
-    return {'message': 'The fit was retrieved'};
+    const client = await client.create(data);
+    return client;
 }
 
 const kpiClients = async () => {
-    return {'message': 'The fit was retrieved'};
+    const kpi = await client.findAll();
+    return kpi;
 }
 
 module.exports = {
