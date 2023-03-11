@@ -7,13 +7,15 @@ const swaggerUI = require('swagger-ui-express');
 const swaggerDocument = require('./src/config/swagger.json');
 const sequelize = require('./src/config/db');
 
-sequelize.sync().then( () => {
-        console.log("This is the data")
+app.use(bodyParser.json());
+app.use(cors());
+
+sequelize.sync().then( () => 
+    {
+        console.log('Data is ok');
     }
 );
 
-app.use(bodyParser.json());
-app.use(cors());
 app.use('/api/', clientRoutes);
 app.use('/api/docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 

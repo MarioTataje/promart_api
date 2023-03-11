@@ -33,7 +33,7 @@
             "200": {
               "description": "OK",
               "schema": {
-                "$ref": "#/definitions/Client"
+                "$ref": "#/definitions/ClientResponses"
               }
             }
           }
@@ -51,7 +51,7 @@
               "in": "body",
               "description": "Datos del cliente que se desea crear",
               "schema": {
-                "$ref": "#/definitions/Client"
+                "$ref": "#/definitions/ClientRequest"
               }
             }
           ],
@@ -62,7 +62,7 @@
             "201": {
               "description": "Un cliente fue creado",
               "schema": {
-                "$ref": "#/definitions/Message"
+                "$ref": "#/definitions/ClientResponse"
               }
             }
           }
@@ -78,7 +78,7 @@
             "200": {
               "description": "OK",
               "schema": {
-                "$ref": "#/definitions/Client"
+                "$ref": "#/definitions/KPI"
               }
             }
           }
@@ -86,13 +86,29 @@
       }
     },
     "definitions": {
-      "Client": {
+      "ClientRequest": {
         "required": [
           "nombre",
           "apellido",
           "edad",
           "fecha_nacimiento"
         ],
+        "properties": {
+          "nombre": {
+            "type": "string"
+          },
+          "apellido": {
+            "type": "string"
+          },
+          "edad": {
+            "type": "number"
+          },
+          "fecha_nacimiento": {
+            "type": "string"
+          }
+        }
+      },
+      "ClientResponse": {
         "properties": {
           "id": {
             "type": "string",
@@ -109,6 +125,23 @@
           },
           "fecha_nacimiento": {
             "type": "string"
+          },
+          "fecha_probable_muerte": {
+            "type": "string"
+          }
+        }
+      },
+      "ClientResponses": {
+        "type": "array",
+        "$ref": "#/definitions/ClientResponse"
+      },
+      "KPI": {
+        "properties": {
+          "promedio_edad": {
+            "type": "number"
+          },
+          "desviacion_estandar": {
+            "type": "number"
           }
         }
       },

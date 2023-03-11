@@ -4,9 +4,9 @@ const { validate } = require('./../config/validate');
 const { checkSchema } = require('express-validator');
 const { clientSchema } = require('../schemas/client');
 
-router.get('listclientes', getClients);
-router.post('creacliente', validate(checkSchema(clientSchema)), createClient);
-router.get('kpideclientes', kpiClients);
+router.get('/listclientes', getClients);
+router.post('/creacliente', validate(checkSchema(clientSchema)), createClient);
+router.get('/kpideclientes', kpiClients);
 
 module.exports = {
     router,

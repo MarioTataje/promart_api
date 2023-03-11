@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
+const moment = require('moment');
 
 const Client = sequelize.define('clients', {
     nombre: {
@@ -9,10 +10,13 @@ const Client = sequelize.define('clients', {
         type: DataTypes.STRING
     },
     edad: {
-        type: DataTypes.NUMBER
+        type: DataTypes.INTEGER
     },
     fecha_nacimiento: {
-        type: DataTypes.DATE
+        type: DataTypes.DATE,
+        get: function() {
+            return moment.utc(this.getDataValue('fecha_nacimiento')).format('YYYY-MM-DD');
+        }
     }
 });
 

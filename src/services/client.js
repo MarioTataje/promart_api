@@ -1,17 +1,21 @@
-const client = require('../models/client');
+const { Client } = require('../models/client');
+const Support = require('../supports/client');
 
 const getClients = async () => {
-    const clients = await client.findAll();
+    let clients = await Client.findAll();
+    clients = Support.buildClients(clients);
     return clients;
 }
 
 const createClient = async (data) => {
-    const client = await client.create(data);
+    data = Support.buildClientRequest(data);
+    const client = await Client.create(data);
     return client;
 }
 
 const kpiClients = async () => {
-    const kpi = await client.findAll();
+    const clients = await Client.findAll();
+    const kpi = Support.buildKpi(clients);
     return kpi;
 }
 

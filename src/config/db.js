@@ -4,6 +4,7 @@ const sequelize = new Sequelize('promart', 'root', 'pacheco98', {
     host: '127.0.0.1',
     dialect: 'mysql',
     // avoid created_at and updated_at
+    timezone: '+08:00',
     define: {
         timestamps: false
     },
