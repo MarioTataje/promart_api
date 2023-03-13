@@ -19,7 +19,7 @@ sequelize.sync().then( () =>
 app.use('/api/', clientRoutes);
 app.use('/api/docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 
-const PORT = 8080;
+const PORT = 80;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
 });
