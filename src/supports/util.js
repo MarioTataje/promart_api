@@ -1,7 +1,16 @@
+const moment = require('moment');
+
 const formatDate = (date) => {
     date = date.replace(/(\d\d)\/(\d\d)\/(\d{4})/, "$3-$2-$1");
     date = new Date(date);
     return date;
+}
+
+const getProbablyDeathDate = (dateString) => {
+    const probablyDeath = moment(dateString, 'DD/MM/YYYY');
+    probablyDeath.add(70, 'years');
+    const probablyDeathFormatted = probablyDeath.format('DD/MM/YYYY');
+    return probablyDeathFormatted;
 }
 
 const getAges = (clients) => {
@@ -29,6 +38,7 @@ const calculateStandardDeviation = (ages) => {
 
 module.exports = {
     formatDate,
+    getProbablyDeathDate,
     getAges,
     calculateMean,
     calculateStandardDeviation

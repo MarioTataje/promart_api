@@ -1,10 +1,12 @@
 const Util = require('./util');
 
 const buildClients = (clients) => {
-    clients.map((client) => {
-        client.dataValues.fecha_probable_muerte = '11/03/2023';
+    const mappedClients = clients.map(client => {
+        const fecha_probable_muerte = Util.getProbablyDeathDate(client.fecha_nacimiento);
+        client.dataValues.fecha_probable_muerte = fecha_probable_muerte;
+        return client;
     });
-    return clients;
+    return mappedClients;
 }
 
 const buildClientRequest = (client) => {

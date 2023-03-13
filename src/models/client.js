@@ -15,7 +15,7 @@ const Client = sequelize.define('clients', {
     fecha_nacimiento: {
         type: DataTypes.DATE,
         get: function() {
-            return moment.utc(this.getDataValue('fecha_nacimiento')).format('YYYY-MM-DD');
+            return moment.utc(this.getDataValue('fecha_nacimiento')).format('DD/MM/YYYY');
         }
     }
 });
